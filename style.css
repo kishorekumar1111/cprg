@@ -1,0 +1,316 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+  }
+  
+  header {
+    background-color: #333;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    animation: slideDown 1s ease-in-out;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+  
+  nav ul li {
+    margin: 0 20px;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    color: #ffb84d; /* Hover color for navigation links */
+  }
+  
+  /* Hero Section with Fade-in Animation */
+  .hero-section {
+    height: 100vh;
+    width: 100vw;
+    background: url('Screenshot 2024-08-09 143755.png') no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background-attachment: fixed; /* Parallax Effect */
+    animation: fadeInBackground 2s ease-in-out;
+  }
+  
+  @keyframes fadeInBackground {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Animated Text - Slide In */
+  .hero-section h1 {
+    font-size: 4rem;
+    background: linear-gradient(90deg, #ffffff,#fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.7), 0px 0px 20px #000;
+    animation: glow 2s ease-in-out infinite alternate, typing 3s steps(40) 0.5s forwards;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid rgba(255, 255, 255, 0.75); /* Blinking cursor effect */
+  }
+  
+  @keyframes glow {
+    from {
+      text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4), 0px 0px 15px #000;
+    }
+    to {
+      text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.8), 0px 0px 30px #f90;
+    }
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  /* Fade-in and slide-up animation for paragraph */
+  .hero-section p {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    color: #fff;
+    animation: fadeInUp 1.5s ease-out forwards 1s; /* Delayed animation */
+    opacity: 0;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  
+  /* Button Hover Effect with Pulse */
+  .btn {
+    background-color: #f90;
+    color: white;
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    margin-top: 2rem;
+    border-radius: 25px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    background: rgba(255, 144, 0, 0.4);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.6s ease;
+    z-index: -1;
+  }
+  
+  .btn:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .btn:hover {
+    background-color: #ffb84d;
+    transform: scale(1.1); /* Slightly enlarges the button */
+  }
+  
+  /* Parallax Effect Adjustments for Different Screen Sizes */
+  @media (max-width: 768px) {
+    .hero-section h1 {
+      font-size: 3rem;
+    }
+  
+    .hero-section p {
+      font-size: 1.2rem;
+    }
+  .btn:hover {
+    background-color: #ffb84d;
+    transform: scale(1.1); /* Slightly enlarges the button on hover */
+  }
+}
+  
+  /* Projects Section */
+  .projects-section,
+  .skills-section,
+  .contact-section {
+    padding: 4rem 2rem;
+  }
+  
+  .projects-section h2,
+  .skills-section h2,
+  .contact-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Project Cards with Hover Effect */
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-10px); /* Moves the card up slightly */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Adds a shadow */
+  }
+  
+  .project-card img {
+    max-width: 100%;
+    border-radius: 10px;
+    transition: opacity 0.3s ease;
+  }
+  
+  .project-card img:hover {
+    opacity: 0.9;
+  }
+  
+  /* Skill Bars with Fill Animation */
+  .skill-bar {
+    margin-bottom: 1rem;
+  }
+  
+  .skill-bar span {
+    display: block;
+    height: 15px;
+    background-color: #333;
+    border-radius: 25px;
+    width: 0; /* Start with 0 width */
+    animation: fillSkill 2s ease forwards;
+  }
+  
+  @keyframes fillSkill {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%; /* The width is adjusted for each skill bar in HTML */
+    }
+  }
+  
+  .skill-bar:nth-child(1) span {
+    width: 90%; /* Adjust skill width according to proficiency */
+    animation-delay: 0.5s;
+  }
+  
+  .skill-bar:nth-child(2) span {
+    width: 80%;
+    animation-delay: 1s;
+  }
+  
+  .skill-bar:nth-child(3) span {
+    width: 70%;
+    animation-delay: 1.5s;
+  }
+  
+  /* Contact Form */
+  .contact-section form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contact-section form input,
+  .contact-section form textarea {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 1rem;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .contact-section form input:focus,
+  .contact-section form textarea:focus {
+    border-color: #f90; /* Highlight input fields on focus */
+  }
+  
+  footer {
+    text-align: center;
+    padding: 2rem 0;
+    background-color: #333;
+    color: white;
+    animation: fadeIn 2s ease-in-out 1s; /* Footer fades in with delay */
+  }
+  
+  .social-links a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .social-links a:hover {
+    color: #ffb84d; /* Hover color for social links */
+  }
+  
+  /* Navbar Slide-in Animation */
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .project-card {
+      text-align: center;
+    }
+  
+    .hero-section h1 {
+      font-size: 3rem;
+    }
+  
+    .hero-section p {
+      font-size: 1.2rem;
+    }
+  }
+  
